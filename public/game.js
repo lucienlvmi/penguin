@@ -1,5 +1,5 @@
-const textElement = document.getElementById('text')
-const optionButtonsElement = document.getElementById('option-buttons')
+const textElement = document.getElementById('text') //this will include the scenes
+const optionButtonsElement = document.getElementById('option-buttons') //for options
 
 let state = {}
 
@@ -42,28 +42,28 @@ function selectOption(option) {
 const textNodes = [
   {
     id: 1,
-    text: 'The Baby penguin just woke up and is very hungry. As it keeps on squawking, you tried to look for some food left last night ',
+    text: 'Baby P. just woke up and is very hungry. Momma and Poppa are out hunting and he is left all alone. As Baby P. keeps on crying, he looks around to find something to eat ',
     
     options: [
       {
-        text: 'Give the baby some silverfish leftover to eat',
+        text: 'Eat the silverfish. It was leftover but should still be good ',
         setState: { silverfish: true },
-        nextText: 2
+        nextText: 4
       },
       {
-        text: 'Leave the silverfish. You prepare to go out to get some crabs',
+        text: 'Leave the silverfish. You want to eat some fresh crabs. You are a big boy now.',
         nextText: 2
       }
     ]
   },
   {
     id: 2,
-    text: 'You went outside the igloo after packing your stuffs and are planning to get fresh food',
+    text: 'You went outside and see several men carting their fresh haul for the day.',
     options: [
       {
-        text: 'Trade the silverFish for some fresh crabs',
+        text: 'Exchange the silverFish for some fresh Alaskan crabs',
         requiredState: (currentState) => currentState.silverfish,
-        setState: { silverFish: false, crabs: true },
+        setState: { silverFish: false, alaskanCrabs: true },
         nextText: 3
       },
       {
@@ -73,94 +73,103 @@ const textNodes = [
         nextText: 3
       },
       {
-        text: 'Dont exchange the silverFish and continue walking along the path',
+        text: 'Exchange the silverFish and continue walking along the road',
         nextText: 3
       }
     ]
   },
   {
     id: 3,
-    text: 'While you are walking, you saw the baby penguin wobbling towards you, you heard a strange sound',
+    text: 'As Baby P walks around the small village, he saw a commotion far away',
     options: [
       {
-        text: 'Look where the strange sound is coming from',
-        nextText: 4
-      },
-      {
-        text: 'You tried running away',
+        text: 'Curiosity kills the cat but not a penguin! Check what the commotion is all about',
         nextText: 5
       },
       {
-        text: 'Find some place to hide',
+        text: ' Run back to the Colony. Shouldnt have been too eager to see the world ',
+        nextText: 6
+      },
+      {
+        text: 'It might be Momma or Poppa looking for him! Baby P. doesnt want to go back yet. Find some place to hide',
         nextText: 6
       }
     ]
   },
   {
     id: 4,
-    text: 'You see the iceberg is cracking. You tried rushing towards the baby penguin',
+    text: 'Oh No! Baby P. had a diarrhea. It turns out the silverfish is spoiled. Momma and Poppa are not happy and grounded him. He stayed at the colonies for the rest of his life',
     options: [
       {
         text: 'Restart',
         nextText: -1
       }
     ]
-  }
-//   {
-//     id: 5,
-//     text: 'Without any money to buy a room you break into the nearest inn and fall asleep. After a few hours of sleep the owner of the inn finds you and has the town guard lock you in a cell.',
-//     options: [
-//       {
-//         text: 'Restart',
-//         nextText: -1
-//       }
-//     ]
-//   },
-//   {
-//     id: 6,
-//     text: 'You wake up well rested and full of energy ready to explore the nearby castle.',
-//     options: [
-//       {
-//         text: 'Explore the castle',
-//         nextText: 7
-//       }
-//     ]
-//   },
-//   {
-//     id: 7,
-//     text: 'While exploring the castle you come across a horrible monster in your path.',
-//     options: [
-//       {
-//         text: 'Try to run',
-//         nextText: 8
-//       },
-//       {
-//         text: 'Attack it with your sword',
-//         requiredState: (currentState) => currentState.sword,
-//         nextText: 9
-//       },
-//       {
-//         text: 'Hide behind your shield',
-//         requiredState: (currentState) => currentState.shield,
-//         nextText: 10
-//       },
-//       {
-//         text: 'Throw the blue goo at it',
-//         requiredState: (currentState) => currentState.blueGoo,
-//         nextText: 11
-//       }
-//     ]
-//   },
-//   {
-//     id: 8,
-//     text: 'Your attempts to run are in vain and the monster easily catches.',
-//     options: [
-//       {
-//         text: 'Restart',
-//         nextText: -1
-//       }
-//     ]
-//   },
+  },
+  {
+    id: 5,
+    text: 'All around you villagers are running away. Mr. Polar OverBear is here. Somehow he smelled the freshly caught alaskan salmon and snow crabs that the men just caught. What do you want to do now? ',
+    options: [
+      {
+        text: 'Play Dead',
+        nextText: 8
+      },
+      {
+        text: ' Run back to the Colony ',
+        nextText: 6
+      },
+      {
+        text: 'Find some place to hide',
+        nextText: 6
+      },
+    ]
+  },
+  {
+    id: 6,
+    text: 'Baby P. clumsily waddle away. It was grumpy Mr. Polar OverBear causing all the commotion. He doesnt want to be eaten and so he tried to run away as fast as his two tiny feet can.',
+    options: [
+      {
+        text: 'Explore the shores',
+        nextText: 7
+      }
+    ]
+  },
+{  
+id: 7,
+    text: 'While exploring the shores, Baby P. heard a strange sound',
+    options: [
+      {
+        text: 'Try to investigate what is causing the strange noise',
+        nextText: 8
+      },
+   
+      {
+        text: 'Attack the strange noise. Throw some Alaskan crabs where the sound is coming from',
+        requiredState: (currentState) => currentState.alaskanCrabs,
+        nextText: 9
+      },
+      {
+        text: 'Hide and wait till the strange sound stop. Meanwhile, eat the cuttle fish',
+        requiredState: (currentState) => currentState.cuttleFish,
+        nextText: 10
+      },
+      {
+        text: 'Throw the spoiled silver fish towards the strang sound ',
+        requiredState: (currentState) => currentState.silverFish,
+        nextText: 11
+      }
+    ]
+  },
+  {
+    id: 8,
+    text: 'Baby P. pretended to play dead. He wanted to run but his two small feet is no match for Mr. Polar OverBear. Mr. OverBear sniff around him. Alas! He didnt believe you are dead and cuff your neck with his oversize paws.',
+    options: [
+      {
+        text: 'Restart',
+        nextText: -1
+      }
+    ]
+  },
 //   {
 //     id: 9,
 //     text: 'You foolishly thought this monster could be slain with a single sword.',
