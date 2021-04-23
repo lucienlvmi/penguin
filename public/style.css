@@ -1,0 +1,14 @@
+h1{
+   color: rgb(0, 128, 128); 
+}
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: medium; color: rgb(16, 109, 133) ;
+}
+.button
+{
+    padding: 2%;
+    border: 3px solid black;
+    background-color:rgb(174, 187, 187);
+    text-shadow: rgb(7, 8, 8);
+    text-emphasis-color: black ;
+}
